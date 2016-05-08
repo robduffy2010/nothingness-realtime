@@ -1,0 +1,17 @@
+<h1> Create a new post </h1>
+
+<%-# Create a form to upload images and give it an opening post, thus creating a new thread. -%>
+
+<%= form_for @post do |f| %>
+
+<%= f.text_area :opening_post, :required => true %>
+<%= f.label :image %>
+
+<%= f.file_field :image  %>
+  
+<%= f.submit 'Upload' %>
+
+<% end %>
+  
+<%-# Render the images partial.  It's responsible for loading all of images and their opening posts.  It can be found in app/views/images/_image.html.erb -%>
+<%= render @posts %>
