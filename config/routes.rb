@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   get 'posts/create'
 
-  get 'posts/create_comment'
-
   get 'posts/thread'
 
   get 'posts/:id', to: 'posts#thread'
@@ -15,7 +13,7 @@ Rails.application.routes.draw do
 
   patch 'posts/:id', to: 'posts#thread'
 
-resources :posts, only: [:new, :create, :index, :destroy, :thread, :create_comment] do
+resources :posts, only: [:new, :create, :index, :destroy, :thread] do
 	member do
 		post :create_comment
 	end
