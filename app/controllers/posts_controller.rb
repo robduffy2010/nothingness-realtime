@@ -10,11 +10,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    post_scores = Post.order('score')
-    @post.score = post_scores[-1].score + 1
+    # If a post has been created, find the highest scoring post, add 1 to it and make that the score of the post being created
+    if Post.any?
+    post_scores = Post.order('score') 
+    @post.score = post_scores[-1].score + 1 
+    end
     if @post.save
       flash[:success] = "The post was added"
       redirect_to root_path
+      ActionCable.server.broadcast 'posts',
+	post: @post.image.url
     else 
       render 'index'
     end
