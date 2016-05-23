@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails' 
+
 gem 'mysql2', '~> 0.3.18'
 
 gem 'paperclip', "~> 4.2"
